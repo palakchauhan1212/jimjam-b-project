@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Special</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel+Decorative:wght@400;700;900&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Cinzel Decorative";
+            background: #FFD6E0;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        hr {
+            color: #6D1A1A;
+        }
+
+        /* Header */
+        .grid {
+            margin: 4% 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-img {
+            position: relative;
+            overflow: hidden;
+            width: clamp(100px, 12vw, 300px);
+            border-radius: 50%;
+        }
+
+        .logo-img img {
+            aspect-ratio: 1;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            cursor: pointer;
+        }
+
+        .logo-img:hover img {
+            transform: scale(1.5);
+        }
+
+        .logo-text h1 {
+            color: #3A86FF;
+            margin-top: 2.5%;
+            font-size: clamp(28px, 4vw, 60px);
+        }
+
+        .logo-text h1 a {
+            color: lightcoral;
+            text-decoration: none;
+        }
+
+        /* Main */
+        .column-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+        }
+
+        .left {
+            margin: 10% 30%;
+            position: relative;
+            overflow: hidden;
+            width: clamp(150px, 25vw, 300px);
+            border-radius: 10%;
+        }
+
+        .left img {
+            aspect-ratio: 1;
+            object-fit: cover;
+        }
+
+        .row-grid p {
+            margin-top: 13.5%;
+            margin-right: 23%;
+            color: #6D1A1A;
+            font-family: Georgia, serif;
+            font-size: clamp(14px, 2vw, 20px);
+            letter-spacing: 1.5px;
+            line-height: 30px;
+        }
+
+        /* Solo Photos Section */
+        .solo-photos {
+            padding: 8%;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5%;
+        }
+
+        .cards-images {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cards-images img {
+            aspect-ratio: 1;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .cards-images:hover img {
+            transform: scale(1.3);
+        }
+
+        .cards:has(.cards-images:hover) .cards-images:not(:hover) img {
+            opacity: 0.6;
+        }
+
+        .dance {
+            width: 90%;
+            height: 80%;
+        }
+
+        .dance video {
+            object-fit: cover;
+            transform: rotate(-90deg);
+        }
+
+        /* Group Section */
+        .gang {
+            width: 90%;
+            justify-content: center;
+            overflow: hidden;
+            padding: 0 5%;
+        }
+
+        .gang-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .g-img {
+            flex: 0 0 33.33%;
+            overflow: hidden;
+            padding: 0.5%;
+            padding-top: 7%;
+            flex-shrink: 0;
+            transition: transform 0.6s ease;
+            box-sizing: border-box;
+        }
+
+        .g-img img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            display: block;
+        }
+
+        .g-img:hover {
+            transform: scale(180%);
+        }
+
+        .g-img:hover img {
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .g-img:has(~ .g-img:hover) {
+            transition: transform 0.6s ease;
+            transform: translateX(-40%);
+        }
+
+        .g-img:hover~.g-img {
+            transition: transform 0.6s ease;
+            transform: translateX(40%);
+        }
+
+        /* Buttons */
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 1% 3%;
+        }
+
+        .buttons #previous {
+            font-size: 110%;
+        }
+
+        .buttons #next {
+            font-size: 110%;
+        }
+
+        .buttons button {
+            padding: 0.5%;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .buttons button:hover {
+            background: #CC5C5C;
+            color: white;
+            transform: scale(1.3);
+        }
+
+        /* Crazy Section */
+        .crazy-section {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            width: max-content;
+            animation: slide 45s linear infinite;
+            padding: 10% 0;
+        }
+
+        .slide-img {
+            width: clamp(150px, 20vw, 250px);
+            aspect-ratio: 1 / 1;
+            flex-shrink: 0;
+            padding: 0.1%;
+            box-sizing: border-box;
+        }
+
+        .slide-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 5%;
+        }
+
+        /* Girlies Section*/
+        .girlies {
+            padding: 8% 1%;
+            width: 95%;
+            display: grid;
+            grid-template-columns: 0.2fr 0.6fr 0.2fr;
+            gap: 0.8%;
+            margin: auto;
+            align-items: stretch;
+        }
+
+        .small-img {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 1%;
+            min-height: 0;
+        }
+
+        .g_img img {
+            min-height: 0;
+        }
+
+        .g_img img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            display: block;
+        }
+
+        .big-img {
+            width: 100%;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        .b_slider {
+            display: flex;
+            height: 100%;
+            width: max-content;
+            animation: slide 35s linear infinite;
+            gap: 0.9%;
+        }
+
+        .b_slide-img {
+            height: 100%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .b_slide-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .videos video {
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Animation */
+        .confetti-container {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .confetti {
+            position: absolute;
+            top: -20px;
+
+            width: 8px;
+            height: 14px;
+
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slide {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .canvas {
+            position: relative;
+
+            width: 90%;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* =========================
+        CAKE
+        ========================= */
+
+        .cake {
+            position: relative;
+            width: 30%;
+            height: 20%;
+            margin-top: 25%;
+        }
+
+        .layer {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200%;
+            background:
+                linear-gradient(to bottom,
+                    #87594d,
+                    #69463d);
+            border-radius:
+                10px 10px 18px 18px;
+            box-shadow:
+                0 5px 8px rgba(70, 30, 30, .15);
+            opacity: 0;
+            animation:
+                layerAppear .7s ease-out forwards;
+        }
+
+        .layer-bottom {
+            bottom: 0;
+            height: 60%;
+            animation-delay: .2s;
+        }
+
+        .layer-middle {
+            bottom: 48%;
+            height: 60%;
+            width: 170%;
+            animation-delay: .55s;
+        }
+
+        .layer-top {
+            bottom: 94%;
+            height: 60%;
+            width: 140%;
+            animation-delay: .9s;
+        }
+
+        @keyframes layerAppear {
+            0% {
+                opacity: 0;
+                transform:
+                    translateX(-50%) translateY(40px) scale(.85);
+            }
+
+            70% {
+                transform:
+                    translateX(-50%) translateY(-4px) scale(1.02);
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    translateX(-50%) translateY(0) scale(1);
+            }
+        }
+
+        .cream-layer {
+            position: absolute;
+            left: 50%;
+            transform:
+                translateX(-50%) scaleX(0);
+            height: 10%;
+            background:
+                linear-gradient(to bottom,
+                    #ffffff,
+                    #f8e9ee);
+            border-radius: 50px;
+            transform-origin: center;
+            opacity: 0;
+            animation:
+                creamSpread .7s cubic-bezier(.2, .8, .2, 1) forwards;
+            z-index: 5;
+        }
+
+        .cream-one {
+            bottom: 50%;
+            width: 200%;
+            animation-delay: 1.05s;
+        }
+
+        .cream-two {
+            bottom: 98%;
+            width: 170%;
+            animation-delay: 1.35s;
+        }
+
+        @keyframes creamSpread {
+            0% {
+                opacity: 0;
+                transform:
+                    translateX(-50%) scaleX(0);
+            }
+
+            60% {
+                opacity: 1;
+                transform:
+                    translateX(-50%) scaleX(1.08);
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    translateX(-50%) scaleX(1);
+            }
+        }
+
+        .frosting {
+            position: absolute;
+            left: 50%;
+            bottom: 153%;
+            width: 140%;
+            height: 25%;
+            transform:
+                translateX(-50%) scaleX(0);
+            transform-origin: center;
+            background:
+                linear-gradient(to bottom,
+                    #ffffff,
+                    #f8edf1);
+            border-radius:
+                12px 12px 5px 5px;
+            opacity: 0;
+            z-index: 10;
+            animation:
+                frostingSpread .8s 1.6s cubic-bezier(.2, .8, .2, 1) forwards;
+        }
+
+        @keyframes frostingSpread {
+            0% {
+                opacity: 0;
+                transform:
+                    translateX(-50%) scaleX(0);
+            }
+
+            65% {
+                opacity: 1;
+                transform:
+                    translateX(-50%) scaleX(1.08);
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    translateX(-50%) scaleX(1);
+            }
+        }
+
+        .drips {
+            position: absolute;
+            bottom: 128%;
+            left: 50%;
+            width: 90%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            z-index: 11;
+        }
+
+        .drip {
+            width: 50%;
+            height: 0;
+            background: #fff;
+            border-radius:
+                0 0 50% 50%;
+            opacity: 0;
+            animation:
+                dripDown .45s ease-out forwards;
+        }
+
+        .drip:nth-child(1) {
+            animation-delay: 2.05s;
+        }
+
+        .drip:nth-child(2) {
+            height: 25px;
+            animation-delay: 2.15s;
+        }
+
+        .drip:nth-child(3) {
+            height: 38px;
+            animation-delay: 2.25s;
+        }
+
+        .drip:nth-child(4) {
+            height: 22px;
+            animation-delay: 2.35s;
+        }
+
+        .drip:nth-child(5) {
+            height: 32px;
+            animation-delay: 2.45s;
+        }
+
+        .drip:nth-child(6) {
+            height: 20px;
+            animation-delay: 2.55s;
+        }
+
+        .drip:nth-child(7) {
+            height: 35px;
+            animation-delay: 2.65s;
+        }
+
+        @keyframes dripDown {
+            0% {
+                opacity: 0;
+                transform:
+                    translateY(-10px) scaleY(0);
+            }
+
+            70% {
+                opacity: 1;
+                transform:
+                    translateY(3px) scaleY(1.08);
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    translateY(0) scaleY(1);
+            }
+        }
+
+        .cream-dot {
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 12;
+            animation:
+                creamDot .4s ease-out forwards;
+        }
+
+        .dot1 {
+            left: 25px;
+            bottom: 118px;
+            animation-delay: 2.2s;
+        }
+
+        .dot2 {
+            left: 75px;
+            bottom: 115px;
+            animation-delay: 2.3s;
+        }
+
+        .dot3 {
+            right: 70px;
+            bottom: 116px;
+            animation-delay: 2.4s;
+        }
+
+        .dot4 {
+            right: 25px;
+            bottom: 118px;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes creamDot {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            70% {
+                transform: scale(1.15);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .birthday-candle {
+            position: absolute;
+            left: 50%;
+            bottom: 150px;
+            width: 13px;
+            height: 52px;
+            transform:
+                translateX(-50%) translateY(-100px);
+            background:
+                repeating-linear-gradient(-45deg,
+                    #ffffff 0px,
+                    #ffffff 6px,
+                    #ff8faf 6px,
+                    #ff8faf 12px);
+            border-radius: 7px;
+            opacity: 0;
+            z-index: 20;
+            animation:
+                candleEntrance .8s 2.8s cubic-bezier(.2, .8, .2, 1) forwards;
+        }
+
+        @keyframes candleEntrance {
+            0% {
+                opacity: 0;
+                transform:
+                    translateX(-50%) translateY(-100px) rotate(-8deg);
+            }
+
+            70% {
+                transform:
+                    translateX(-50%) translateY(5px) rotate(3deg);
+            }
+
+            100% {
+                opacity: 1;
+                transform:
+                    translateX(-50%) translateY(0) rotate(0);
+            }
+        }
+
+        .birthday-candle::before {
+            content: "";
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            width: 3px;
+            height: 8px;
+            transform: translateX(-50%);
+            background: #333;
+            border-radius: 50%;
+        }
+
+        .flame {
+            position: absolute;
+            left: 50%;
+            top: -30px;
+            width: 18px;
+            height: 28px;
+            transform:
+                translateX(-50%) scale(0);
+            background:
+                radial-gradient(circle at 50% 70%,
+                    #fff 0 15%,
+                    #ffd65c 30%,
+                    #ff9800 65%,
+                    #ff5b00);
+            border-radius:
+                50% 50% 45% 45%;
+            box-shadow:
+                0 0 8px #ffd65c,
+                0 0 18px #ff9800;
+            opacity: 0;
+            animation:
+                flameAppear .4s 3.65s forwards,
+                flameFlicker .25s 4.05s infinite alternate;
+        }
+
+        @keyframes flameAppear {
+            from {
+                opacity: 0;
+                transform:
+                    translateX(-50%) scale(0);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateX(-50%) scale(1);
+            }
+        }
+
+        @keyframes flameFlicker {
+            from {
+                transform:
+                    translateX(-50%) scale(.9) rotate(-3deg);
+            }
+
+            to {
+                transform:
+                    translateX(-50%) scale(1.12) rotate(4deg);
+            }
+        }
+
+        .text-container {
+            margin-top: 35px;
+            text-align: center;
+            color: white;
+            text-shadow:
+                0 3px 10px rgba(120, 30, 60, .3);
+        }
+
+        .happy-birthday {
+            font-size: 32px;
+            font-weight: 700;
+            opacity: 0;
+            animation:
+                textAppear 1s 4.2s ease-out forwards;
+        }
+
+        .love {
+            margin-top: 8px;
+            font-size: 17px;
+            opacity: 0;
+            animation:
+                textAppear 1s 4.7s ease-out forwards;
+        }
+
+        @keyframes textAppear {
+            from {
+                opacity: 0;
+                transform:
+                    translateY(20px) scale(.9);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0) scale(1);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .canvas {
+                transform: scale(.85);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="confetti-container"></div>
+    <header>
+        <div class="grid">
+            <div class="logo-img">
+                <a href="#">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\ohhhh.jpeg" alt="JimJam">
+                </a>
+            </div>
+            <div class="logo-text">
+                <h1>HAPPY BIRTHDAY <a href="C:\Users\HP\Desktop\kya oyeee!!\images\link.jpeg">RIMJHIM BRO.. </a> </h1>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="column-grid">
+            <div class="left">
+                <img src="C:\Users\HP\Desktop\kya oyeee!!\images\1st_jimjam.jpeg">
+            </div>
+            <div class="row-grid">
+                <div class="canvas">
+                    <div class="cake">
+                        <div class="layer layer-bottom"></div>
+                        <div class="cream-layer cream-one"></div>
+                        <div class="layer layer-middle"></div>
+                        <div class="cream-layer cream-two"></div>
+                        <div class="layer layer-top"></div>
+                        <div class="frosting"></div>
+                        <div class="drips">
+                            <div class="drip"></div>
+                            <div class="drip"></div>
+                            <div class="drip"></div>
+                            <div class="drip"></div>
+                            <div class="drip"></div>
+                            <div class="drip"></div>
+                            <div class="drip"></div>
+                        </div>
+                        <div class="cream-dot dot1"></div>
+                        <div class="cream-dot dot2"></div>
+                        <div class="cream-dot dot3"></div>
+                        <div class="cream-dot dot4"></div>
+                        <div class="birthday-candle">
+                            <div class="flame"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="solo-photos">
+            <div class="cards">
+                <div class="cards-images">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\_1.jpeg" alt="Bday image 1">
+                </div>
+                <div class="cards-images">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\_2.jpeg" alt="Bday image 2">
+                </div>
+                <div class="cards-images">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\_3.jpeg" alt="Bday image 3">
+                </div>
+                <div class="cards-images">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\_4.jpeg" alt="Bday image 4">
+                </div>
+                <div class="cards-images">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\_5.jpeg" alt="Bday image 5">
+                </div>
+                <div class="cards-images">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\_6.jpeg" alt="Bday image 6">
+                </div>
+                <div class="cards-images">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\_7.jpeg" alt="Bday image 7">
+                </div>
+                <div class="cards-images">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\_8.jpeg" alt="Bday image 8">
+                </div>
+                <div class="cards-images">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\_9.jpeg" alt="Bday image 9">
+                </div>
+                <div class="cards-images">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\_10.jpeg" alt="Bday image 10">
+                </div>
+            </div>
+        </div>
+        <center>
+            <div class="dance">
+                <video src="C:\Users\HP\Desktop\kya oyeee!!\images\video___.mp4" height="65%" width="45%" controls
+                    autoplay loop muted></video>
+            </div>
+        </center>
+        <div class="gang">
+            <div class="gang-images">
+                <div class="g-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\grp_1.jpeg" alt="Gang image 1">
+                </div>
+                <div class="g-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\grp_2.jpeg" alt="Gang image 2">
+                </div>
+                <div class="g-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\grp_3.jpeg" alt="Gang image 3">
+                </div>
+                <div class="g-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\grp_4.jpeg" alt="Gang image 4">
+                </div>
+                <div class="g-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\grp_5.jpeg" alt="Gang image 5">
+                </div>
+                <div class="g-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\grp_6.jpeg" alt="Gang image 6">
+                </div>
+                <div class="g-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\grp_7.jpeg" alt="Gang image 7">
+                </div>
+                <div class="g-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\grp_8.jpeg" alt="Gang image 8">
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="previous">(←) Prev</button>
+            <button id="next">Next (→)</button>
+        </div>
+        <div class="crazy-section">
+            <div class="slider">
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_1.jpeg" alt="img_1">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_2.jpeg" alt="img_2">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_3.jpeg" alt="img_3">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_4.jpeg" alt="img_4">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_5.jpeg" alt="img_5">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_6.jpeg" alt="img_6">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_7.jpeg" alt="img_7">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_8.jpeg" alt="img_8">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_9.jpeg" alt="img_9">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_10.jpeg" alt="img_10">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_11.jpeg" alt="img_11">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_12.jpeg" alt="img_12">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_13.jpeg" alt="img_13">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_14.jpeg" alt="img_14">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_15.jpeg" alt="img_15">
+                </div>
+                <div class="slide-img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\hehe_16.jpeg" alt="img_16">
+                </div>
+            </div>
+        </div>
+        <div class="girlies">
+            <div class="small-img">
+                <div class="g_img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\girlies_1.jpeg">
+                </div>
+                <div class="g_img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\girlies_2.jpeg">
+                </div>
+                <div class="g_img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\girlies_3.jpeg">
+                </div>
+            </div>
+            <div class="big-img">
+                <div class="b_slider">
+                    <div class="b_slide-img">
+                        <img src="C:\Users\HP\Desktop\kya oyeee!!\images\img11.jpeg">
+                    </div>
+                    <div class="b_slide-img">
+                        <img src="C:\Users\HP\Desktop\kya oyeee!!\images\img12.jpeg">
+                    </div>
+                    <div class="b_slide-img">
+                        <img src="C:\Users\HP\Desktop\kya oyeee!!\images\img13.jpeg">
+                    </div>
+                    <div class="b_slide-img">
+                        <img src="C:\Users\HP\Desktop\kya oyeee!!\images\img14.jpeg">
+                    </div>
+                </div>
+            </div>
+            <div class="small-img">
+                <div class="g_img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\girlies_1.jpeg">
+                </div>
+                <div class="g_img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\girlies_2.jpeg">
+                </div>
+                <div class="g_img">
+                    <img src="C:\Users\HP\Desktop\kya oyeee!!\images\girlies_3.jpeg">
+                </div>
+            </div>
+        </div>
+        <center>
+            <div class="videos">
+                <video src="C:\Users\HP\Desktop\kya oyeee!!\images\video__.mp4" height="50%" width="30%" controls muted
+                    poster="C:\Users\HP\Desktop\kya oyeee!!\images\vd_poster.jpeg"> </video>
+            </div>
+        </center>
+    </main>
+
+</body>
+
+<script>
+    const container = document.querySelector(".confetti-container");
+
+    const colors = ["#E8A08D", "#E07A5F", "#8A9A86", "#F2B84B"];
+
+    for (let i = 0; i < 60; i++) {
+
+        const confetti = document.createElement("div");
+
+        confetti.classList.add("confetti");
+
+        confetti.style.left = Math.random() * 100 + "%";
+        confetti.style.animationDuration =
+            (3 + Math.random() * 5) + "s";
+
+        confetti.style.animationDelay =
+            Math.random() * 5 + "s";
+
+        confetti.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+
+        confetti.style.transform =
+            `rotate(${Math.random() * 360}deg)`;
+
+        container.appendChild(confetti);
+    }
+
+    // Previous & Next
+    const photos = document.querySelector(".gang-images");
+    const images = document.querySelectorAll(".gang-images img");
+
+    const next = document.querySelector("#next");
+    const prev = document.querySelector("#previous");
+
+    let current = 0;
+
+    next.addEventListener("click", () => {
+        current++;
+        if (current > images.length - 3) {
+            current = 0;
+        }
+        photos.style.transform = `translateX(-${current * 33.33}%)`;
+    });
+
+    prev.addEventListener("click", () => {
+        current--;
+        if (current < 0) {
+            current = images.length - 3;
+        }
+        photos.style.transform = `translateX(-${current * 33.33}%)`;
+    });
+
+    // Photos Slider
+    const bigImg = document.querySelector(".big-img");
+    const slides = document.querySelectorAll(".b_slide-img");
+
+    function resizeSlides() {
+        const width = bigImg.offsetWidth;
+
+        slides.forEach(slide => {
+            slide.style.width = width + "px";
+        });
+    }
+
+    resizeSlides();
+
+    window.addEventListener("resize", resizeSlides);
+</script>
+
+</html>
